@@ -1,5 +1,5 @@
 # Web3Qml
-Web3 for Qml makes compatible webjs dist for using in Qt Qml projects.
+Web3 for Qml makes compatible [web3js](https://github.com/ChainSafe/web3.js) dist for using in [Qt Qml](https://doc.qt.io/qt-5/qtqml-index.html) projects.
 
 # Last webjs release 1.3.5
 ```
