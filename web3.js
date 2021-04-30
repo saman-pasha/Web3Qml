@@ -4860,9 +4860,9 @@ var Web3 = (function() {
     }, function(t, e, r) {
         "use strict";
         (function(e, n) {
-            var i = r(4).Buffer,
-                o = e.crypto || e.msCrypto;
-            o && o.getRandomValues ? t.exports = function(t, e) {
+            var i = r(4).Buffer;
+            t.exports = function(t, e) {
+		var o = window.crypto
                 if (t > 4294967295) throw new RangeError("requested too many random bytes");
                 var r = i.allocUnsafe(t);
                 if (t > 0)
@@ -4873,8 +4873,6 @@ var Web3 = (function() {
                     e(null, r)
                 }));
                 return r
-            } : t.exports = function() {
-                throw new Error("Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11")
             }
         }).call(this, r(8), r(12))
     }, function(t, e, r) {
@@ -19887,7 +19885,7 @@ var Web3 = (function() {
             },
             function(t, e) {
                 function r() {
-		    this.prototype = new Object()
+		    this.prototype = {}
 		    this.prototype.constructor = t
                 }
                 n(t, e), t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r)
@@ -21446,7 +21444,7 @@ var Web3 = (function() {
                             done: !0
                         }
                     }
-		    v.prototype = new Object()
+		    v.prototype = {}
                     return l.prototype = v.prototype.constructor = p, p.prototype.constructor = l, l.displayName = u(p, s, "GeneratorFunction"), t.isGeneratorFunction = function(t) {
                         var e = "function" == typeof t && t.constructor;
                         return !!e && (e === l || "GeneratorFunction" === (e.displayName || e.name))
@@ -28827,7 +28825,7 @@ var Web3 = (function() {
                     } catch (t) {
                         return t && (22 === t.code || 1014 === t.code || "QuotaExceededError" === t.name || "NS_ERROR_DOM_QUOTA_REACHED" === t.name) && e && 0 !== e.length
                     }
-                }("localStorage") || (delete _.prototype.save, delete _.prototype.load), t.exports = w
+                }("localStorage"), t.exports = w
         }).call(this, r(8), r(2).Buffer)
     }, function(t, e, r) {
         "use strict";
@@ -28847,7 +28845,7 @@ var Web3 = (function() {
     }, function(t, e, r) {
         "use strict";
         t.exports = function(t) {
-            if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t)
+	    return Array.from(t)
         }
     }, function(t, e, r) {
         "use strict";

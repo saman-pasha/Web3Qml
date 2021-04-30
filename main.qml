@@ -21,6 +21,18 @@ Window {
     }
 
     Component.onCompleted: {
+        Web3.window.localStorage = {}
+        Web3.window.localStorage.setItem    = utils.setItem
+        Web3.window.localStorage.getItem    = utils.getItem
+        Web3.window.localStorage.removeItem = utils.removeItem
+        Web3.window.crypto = {}
+        Web3.window.crypto.getRandomValues = function (values) {
+            var bytes = utils.getRandomValues(values.length)
+            for (var i = 0; i < values.length; i++)
+                values[i] = bytes[i]
+            return values
+        }
+
         var w3 = new Web3.Web3("https://mianjoo.ir:8545");
 
         w3.eth.getCoinbase().then(function (coinbase) {
