@@ -37,11 +37,11 @@ Window {
 
         w3.eth.getCoinbase().then(function (coinbase) {
             console.log('Coinbase:', coinbase)
-            output.text = output.text + "\nCoinbase: " + coinbase.toString()
+            output.text = output.text + "\nCoinbase: " + coinbase
 
             w3.eth.getBalance(coinbase).then(function (balance) {
                 console.log('Balance:', balance)
-                output.text = output.text + "\nBalance: " + balance.toString()
+                output.text = output.text + "\nBalance: " + balance
 
                 var contract = new w3.eth.Contract(Abi.ABI, '0xFD35fCB4096bBfa78ECb41d354894A86BB0E4F8F')
                 contract.methods.balanceOf(coinbase).call(
@@ -50,7 +50,7 @@ Window {
                             },
                             function(error, result) {
                                 console.log('Smart Contract:', error, result);
-                                output.text = output.text + "\nSmart Contract: " + result.toString()
+                                output.text = output.text + "\nSmart Contract: " + result
                             });
             });
         })
