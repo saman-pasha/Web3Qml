@@ -20,7 +20,32 @@ Window {
         text: "Web3Qml"
     }
 
+    function setTimeout(func, interval, ...params) {
+        return setTimeoutComponent.createObject(window, { func, interval, params} );
+    }
+
+    function clearTimeout(timerObj) {
+        timerObj.stop();
+        timerObj.destroy();
+    }
+
+    Component {
+        id: setTimeoutComponent
+        Timer {
+            property var func
+            property var params
+            running: true
+            repeat: false
+            onTriggered: {
+                func(...params);
+                destroy();
+            }
+        }
+    }
+
     Component.onCompleted: {
+        Web3.window.setTimeout = setTimeout
+        Web3.window.clearTimeout = clearTimeout
         Web3.window.localStorage = {}
         Web3.window.localStorage.setItem    = utils.setItem
         Web3.window.localStorage.getItem    = utils.getItem
